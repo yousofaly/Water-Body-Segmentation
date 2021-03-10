@@ -46,7 +46,7 @@ callbacks_list = [checkpointer, csv_logger, early_stopper]
 #build model and compile
 model = unet.unet(n_classes, input_height = ih, input_width = iw)
 model.compile(loss = loss, optimizer = opt, metrics = [metrics])
-model.summary()
+#model.summary()
 
 history = model.fit(train_gen, epochs = n_epochs,
                    steps_per_epoch = (tstop // batch_size),
