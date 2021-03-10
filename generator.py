@@ -13,6 +13,7 @@ def generator(df, ih = 1024, iw = 1024, start = 0, stop = 4, bs = 32,
             
             if len(masks) == bs:
                 if aug is not None:
+                    #to do add in aug
                     pass
                 yield np.array(images), np.array(masks)
             
