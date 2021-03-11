@@ -1,8 +1,5 @@
-from keras.models import *
+from keras.models import Model
 from keras.layers import *
-from keras.optimizers import *
-from keras.callbacks import ModelCheckpoint, CSVLogger, EarlyStopping
-from keras.metrics import MeanIoU
 
 def unet(n_calsses = 1, input_shape = (512,512,3)):
     inputs = Input(input_shape)
