@@ -91,8 +91,8 @@ def unet_skinny(img_size, num_classes):
         x = UpSampling2D(2)(x)
 
         # Project residual
-        residual = .UpSampling2D(2)(previous_block_activation)
-        residual = .Conv2D(filters, 1, padding="same")(residual)
+        residual = UpSampling2D(2)(previous_block_activation)
+        residual = Conv2D(filters, 1, padding="same")(residual)
         x = add([x, residual])  # Add back residual
         previous_block_activation = x  # Set aside next residual
 
