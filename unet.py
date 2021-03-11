@@ -1,3 +1,9 @@
+from keras.models import *
+from keras.layers import *
+from keras.optimizers import *
+from keras.callbacks import ModelCheckpoint, CSVLogger, EarlyStopping
+from keras.metrics import MeanIoU
+
 def unet(n_calsses = 1, input_shape = (512,512,3)):
     inputs = Input(input_shape)
     conv1 = Conv2D(64, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(inputs)
@@ -42,4 +48,60 @@ def unet(n_calsses = 1, input_shape = (512,512,3)):
 
     model = Model(inputs = inputs, outputs = conv10)
 
+    return model
+
+
+def unet_skinny(img_size, num_classes):
+    inputs = Input(shape=img_size + (3,))
+
+    ### [First half of the network: downsampling inputs] ###
+
+    # Entry block
+    x = Conv2D(32, 3, strides=2, padding="same")(inputs)
+    x = BatchNormalization()(x)
+    x = Activation("relu")(x)
+
+    previous_block_activation = x  # Set aside residual
+
+    # Blocks 1, 2, 3 are identical apart from the feature depth.
+    for filters in [64, 128, 256]:
+        x = Activation("relu")(x)
+        x = SeparableConv2D(filters, 3, padding="same")(x)
+        x = BatchNormalization()(x)
+
+        x = Activation("relu")(x)
+        x = SeparableConv2D(filters, 3, padding="same")(x)
+        x = BatchNormalization()(x)
+
+        x = MaxPooling2D(3, strides=2, padding="same")(x)
+
+        # Project residual
+        residual = Conv2D(filters, 1, strides=2, padding="same")(previous_block_activation)
+        x = add([x, residual])  # Add back residual
+        previous_block_activation = x  # Set aside next residual
+
+    ### [Second half of the network: upsampling inputs] ###
+
+    for filters in [256, 128, 64, 32]:
+        x = Activation("relu")(x)
+        x = Conv2DTranspose(filters, 3, padding="same")(x)
+        x = BatchNormalization()(x)
+
+        x = Activation("relu")(x)
+        x = Conv2DTranspose(filters, 3, padding="same")(x)
+        x = BatchNormalization()(x)
+
+        x = UpSampling2D(2)(x)
+
+        # Project residual
+        residual = .UpSampling2D(2)(previous_block_activation)
+        residual = .Conv2D(filters, 1, padding="same")(residual)
+        x = add([x, residual])  # Add back residual
+        previous_block_activation = x  # Set aside next residual
+
+    # Add a per-pixel classification layer
+    outputs = .Conv2D(num_classes, 3, activation="softmax", padding="same")(x)
+
+    # Define the model
+    model = Model(inputs, outputs)
     return model
