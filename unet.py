@@ -100,7 +100,7 @@ def unet_skinny(img_size, num_classes):
         previous_block_activation = x  # Set aside next residual
 
     # Add a per-pixel classification layer
-    outputs = .Conv2D(num_classes, 3, activation="softmax", padding="same")(x)
+    outputs = Conv2D(num_classes, 3, activation="softmax", padding="same")(x)
 
     # Define the model
     model = Model(inputs, outputs)
