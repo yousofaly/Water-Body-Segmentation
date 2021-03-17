@@ -17,4 +17,4 @@ def generator(images, masks, ih = 1024, iw = 1024,
           
         yield np.array(image_array), np.array(mask_array)
         image_array = []
-        mask_array = [
+        mask_array = []
