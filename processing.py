@@ -32,7 +32,7 @@ def get_paths():
   mask_paths = []
   for p in sorted(os.listdir('Data/Images')):
     image_paths.append(os.path.join('Data','Images',p))
-  for p in sorted(os.listdir('Data/Masks'):
+  for p in sorted(os.listdir('Data/Masks')):
     mask_paths.append(os.path.join('Data','Masks',p))
   
   return (image_paths, mask_paths)
