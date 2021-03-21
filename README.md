@@ -27,7 +27,7 @@ train.py
  * train/validaton/test split (70/20/10) assuming all one folder each for images and masks 
  * train with callbacks (EarylStopper, CSVLogger, and checkpointer)
 
-show_prediction.py
+predict.py
  * display image, true mask and predicted mask 
  * OR
  * display image and predicted mask if there is no correspoinding ground truth mask 
@@ -54,6 +54,3 @@ Example 2
 ![image](https://user-images.githubusercontent.com/56979366/111925476-0126e680-8a77-11eb-804f-0b57a61b5715.png)
 
 ![image](https://user-images.githubusercontent.com/56979366/111925485-071cc780-8a77-11eb-9e85-00245c77fab8.png)
-
-
-
