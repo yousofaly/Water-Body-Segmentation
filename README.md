@@ -12,21 +12,27 @@ I used Google Colab (and a GPU runtime) to train on 1988 images, which took abou
 ## Files
 dice.py
 * dice coefficient (metric) and dice loss (custom loss) 
+
 generator.py
  * image generator which reads images and masks from Data/Images and Data/Masks
  * resizes to desired shape (I used 256,256)
  * yields batches upon reaching desired batch size
+
 models.py
 * here I define a U-Net and a smaller segmentation model (U-Net skinny)
+
 train.py
  * creates.compiles model from models.py
  * train/validaton/test split (70/20/10) assuming all one folder each for images and masks 
  * train with callbacks (EarylStopper, CSVLogger, and checkpointer)
- show_prediction.py
+
+show_prediction.py
  * display image, true mask and predicted mask 
  * OR
  * display image and predicted mask if there is no correspoinding ground truth mask 
- evaluate.py
+
+evaluate.py
  * loads desired model from results folder
  * evaluates on validation data
- ## Results
+
+## Results
