@@ -40,7 +40,7 @@ evaluate.py
 Baseline model (unet from models.py) acheived a dice score of 0.85. Below are some examples of the images (from the validation set), the true mask and the predicted mask.
 
 |           | Image                                                                                                          | Mask | Prediction |
-| --------- | -------------------------------------------------------------------------------------------------------------- | 
+| --------- | -------------------------------------------------------------------------------------------------------------- | ---- | ---------- | 
 | Example 1 | ![image](https://user-images.githubusercontent.com/56979366/111926092-71cf0280-8a79-11eb-9192-b7c3531406b1.png)| ![image](https://user-images.githubusercontent.com/56979366/111926425-c921a280-8a7a-11eb-9293-87ebb28b27e9.png) | ![image](https://user-images.githubusercontent.com/56979366/111926437-d8085500-8a7a-11eb-8e8f-2b4c812f4c23.png) |
 
 
