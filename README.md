@@ -42,8 +42,4 @@ Baseline model (unet from models.py) acheived a dice score of 0.85. Below are so
 |           | Image                                                                                                          | Mask | Prediction |
 | --------- | -------------------------------------------------------------------------------------------------------------- | ---- | ---------- | 
 | Example 1 | ![image](https://user-images.githubusercontent.com/56979366/111926092-71cf0280-8a79-11eb-9192-b7c3531406b1.png)| ![image](https://user-images.githubusercontent.com/56979366/111929245-cd05f280-8a83-11eb-8d28-e3924ec41eb7.png) | ![image](https://user-images.githubusercontent.com/56979366/111929258-d55e2d80-8a83-11eb-937e-bcc9be4684ce.png) |
-
-
-
-
 | Example 2 | Content Cell  |
